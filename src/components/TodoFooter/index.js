@@ -16,15 +16,15 @@ class TodoFooter extends Component {
                     </span>
                     <ul className = 'filters'>
                        <li>
-                           <a href='#/' className = 'selected' onClick = { () => this.props.allViewItems()}>All</a>
+                           <a className = 'selected' onClick = { () => this.props.allViewItems()}>All</a>
                            <span> </span>
                        </li>
                        <li>
-                           <a href='#/active' className = 'selected' onClick = { () => this.props.activeViewItems(false)}>Active</a>
+                           <a className = 'selected' onClick = { () => this.props.activeViewItems(false)}>Active</a>
                            <span> </span>
                        </li>
                        <li>
-                           <a href=' #/completed' className = 'selected'  onClick = { () => this.props.activeViewItems(true)}>Completed</a>
+                           <a className = 'selected'  onClick = { () => this.props.activeViewItems(true)}>Completed</a>
                            <span> </span>
                        </li>
 
