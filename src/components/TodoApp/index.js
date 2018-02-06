@@ -7,20 +7,21 @@ import TodoFooter from "../TodoFooter";
 
 export default class TodoApp extends Component {
     constructor(props, context) {
-        super(props, context);
+        super(props);
 
         this.state = {
             items: [],
             itemsFiltered: []
         };
 
+       
         this.addItem = this.addItem.bind(this);
         this.deleteItem = this.deleteItem.bind(this);
     }
 
     addItem(e, value) {
         let patt2 = /^\D/g;
-
+     
         e.preventDefault();
 
         const { items: itemArray } = this.state;
@@ -39,9 +40,7 @@ export default class TodoApp extends Component {
                 });
 
                 document.getElementById("inputForm").value = '';
-            }  else  {
-                alert('Error');
-            }     
+            } 
     }
 
     completed_task = key_id => {

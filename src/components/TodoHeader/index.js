@@ -1,16 +1,14 @@
-import React, { Component } from "react";
+import React from "react";
 
-class TodoHeader extends Component {
-    
-render() {
+export default function TodoHeader (props) {
+  
     return (
-      
+  
          <div>
             <h1>To-Do</h1>
-         </div>
-      
+         </div>   
     );
    }
-};   
+   
 
-  export default TodoHeader;
+  

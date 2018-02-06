@@ -16,6 +16,7 @@ export default class TodoList extends Component {
     }
 
     handleLabelDoubleClick = (text, key ) => {
+        
         this.setState({
           isEditing: true,
           textInputEdit : text,
@@ -85,6 +86,7 @@ export default class TodoList extends Component {
     }
 
     render() {
+    
         let todoEntries = this.props.entries;
         let listItems = todoEntries.map(this.createTasks);
  

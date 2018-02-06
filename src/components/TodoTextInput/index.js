@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactDom from 'react-dom';
 
 const ENTER_KEY_CODE = 13;
@@ -15,9 +15,9 @@ export default class TodoTextInput extends React.Component {
     }
   }
 
-  static defaultProps = {
-    commitOnBlur: false
-  }
+  // static defaultProps = {
+  //   commitOnBlur: false
+  // }
 
   componentDidMount() {
     ReactDom.findDOMNode(this).focus();
