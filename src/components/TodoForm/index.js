@@ -34,15 +34,23 @@ export default class TodoForm extends Component {
         }
         else {return false }
     }
-           
+    handleSubmit = (e) => {
+        e.preventDefault();
+        const { errorExistence, inputValue } = this.state;
+        if (!errorExistence) {
+            this.props.addItem(inputValue);
+            this.setState({
+                inputValue: ''
+            });
+        }
+    }       
     render (){
          const { inputValue } = this.state;
-         const { addItem } = this.props;
-
             return ( <div>
-                      <form onSubmit={(e) => addItem (e, inputValue) }>
+                      <form onSubmit={(e) => this.handleSubmit(e)}>
                         <input
                             id ='inputForm'
+                            value={inputValue}
                             placeholder="What needs to be done?"
                             onKeyPress={this.addItemEnter}
                             onChange={this.handleChange} 

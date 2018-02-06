@@ -1,5 +1,6 @@
 import React from "react";
-import ReactDom from 'react-dom';
+// import ReactDom from 'react-dom';
+import validate from '../../utils/inputValidation';
 
 const ENTER_KEY_CODE = 13;
 const ESC_KEY_CODE = 27;
@@ -15,12 +16,9 @@ export default class TodoTextInput extends React.Component {
     }
   }
 
-  // static defaultProps = {
-  //   commitOnBlur: false
-  // }
-
   componentDidMount() {
-    ReactDom.findDOMNode(this).focus();
+    this.input.focus();
+    // ReactDom.findDOMNode(this).focus();
   }
 
   handleBlur = () => {
@@ -43,9 +41,7 @@ export default class TodoTextInput extends React.Component {
 
   save() {
     const text = this.state.text.trim();
-    let patt2 = /^\D/g;
-    if (text !== '' && patt2.test(text[0]) && text.length < 15) 
-    {
+    if (validate(text)) {
       this.props.onSave(text);
       this.setState({ text: '' });
     }
@@ -53,7 +49,8 @@ export default class TodoTextInput extends React.Component {
 
   render() {
     return (
-      <input className={this.props.className || ''}
+      <input ref={(input) => this.input = input}
+             className={this.props.className || ''}
              placeholder={this.state.text}
              value={this.state.text}
              onBlur={this.handleBlur}

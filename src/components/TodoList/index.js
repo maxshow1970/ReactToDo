@@ -38,7 +38,7 @@ export default class TodoList extends Component {
 
     handleInputSave = (text) => {
         if (text !=='') { 
-         this.props.editItem(text,this.state.keyInputEdit);
+         this.props.editItem(text, this.state.keyInputEdit);
 
          this.setState({
           isEditing: false
@@ -66,19 +66,19 @@ export default class TodoList extends Component {
       }
     
     createTasks(item) {
-         return (
-                <li className = 'completed' key={ item.key } >    
-                      <div className = 'view' >
-                         <input className = 'toggle' 
-                              checked = { item.completed }   
-                              onChange={ () => this.props.completedTask(item.key)}  
-                              type = 'checkbox' />
-                         <label  onDoubleClick={() => this.handleLabelDoubleClick(item.text,item.key)}> {item.text} </label> 
-                         <button className = "destroy" onClick={() => this.delete(item.key)} > X </button>  
-                      </div>  
-                      {this.makeInput(item)}
-                </li>
-                );
+      return (
+        <li className = 'completed' key={ item.key } >    
+              <div className = 'view' >
+                  <input className = 'toggle' 
+                      checked = { item.completed }   
+                      onChange={ () => this.props.completedTask(item.key)}  
+                      type = 'checkbox' />
+                  <label  onDoubleClick={() => this.handleLabelDoubleClick(item.text, item.key)}> {item.text} </label> 
+                  <button className = "destroy" onClick={() => this.delete(item.key)} > X </button>  
+              </div>  
+              {this.makeInput(item)}
+        </li>
+      );
     };
 
     delete(key) {
@@ -86,10 +86,8 @@ export default class TodoList extends Component {
     }
 
     render() {
-    
         let todoEntries = this.props.entries;
         let listItems = todoEntries.map(this.createTasks);
- 
         return ( <ul className = "theList" >
                     { listItems }
                 </ul>

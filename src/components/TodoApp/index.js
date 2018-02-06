@@ -19,28 +19,18 @@ export default class TodoApp extends Component {
         this.deleteItem = this.deleteItem.bind(this);
     }
 
-    addItem(e, value) {
-        let patt2 = /^\D/g;
-     
-        e.preventDefault();
-
+    addItem(value) {
         const { items: itemArray } = this.state;
-        
-            if (value !== "" && patt2.test( value[0]) && value.length < 15) {
+        let stateObj = {
+            text: value,
+            key: Date.now(),
+            completed : false
+        };
 
-               let stateObj = {
-                    text: value,
-                    key: Date.now(),
-                    completed : false
-                };
-
-                this.setState({
-                    items: [...itemArray,stateObj],
-                    itemsFiltered: [...itemArray,stateObj]
-                });
-
-                document.getElementById("inputForm").value = '';
-            } 
+        this.setState({
+            items: [...itemArray,stateObj],
+            itemsFiltered: [...itemArray,stateObj]
+        });
     }
 
     completed_task = key_id => {
@@ -98,17 +88,15 @@ export default class TodoApp extends Component {
     }
 
     editItem = (textIn,key) => {
-        this.setState(prevState=>({
-            items : prevState.items.map((value) =>{
-                if (value.key === key) value.text = textIn;
-                return value;
-            }),  
-            itemsFiltered : prevState.itemsFiltered.map((value) =>{
-                if (value.key === key) value.text = textIn;
-                return value;
-            })    
-        }))
-
+        // dispatch(text, id);
+        const updeatedItems = this.state.items.map((value) =>{
+            if (value.key === key) value.text = textIn;
+            return value;
+        });
+        this.setState({
+            items : updeatedItems,  
+            itemsFiltered : updeatedItems    
+        });
     }
 
      render() {
